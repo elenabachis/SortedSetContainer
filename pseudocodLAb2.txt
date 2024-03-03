@@ -1,0 +1,23 @@
+subalgorithm void SortedSetIterator::deleteCurrent() is:
+
+    if valid()=FALSE then
+        throw exception()
+    end_if
+    Node* prevNode = current.prev;
+    Node* nextNode = current.next;
+
+    if prevNode = nullptr then
+        current=nextNode;
+    
+    else:
+        prevNode.next=nextNode;
+    end_if 
+
+    if nextNode = nullptr then 
+      current = prevNode;
+    else 
+        nextNode.prev = prevNode;
+    end_if
+    Node* oldNode = current
+    current = nextNode
+    delete oldNode
